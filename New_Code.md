@@ -1022,17 +1022,11 @@ A complete glossary of terms, operators, and types in New Code. Entries are orde
 
 ## Closing Note
 
-New Code is a proposal. It is not a finished language. The specification above describes an object that is consistent on paper and that could, with substantial engineering effort, be implemented. Whether it should be implemented, whether the benefits of a process-native, intent-typed, waveform-primitive language justify the cost of building it, is a question the community of users will have to answer.
+The first review's two recommendations were "narrow to audio" and "fake the AI compiler." One of those is right. The compiler in v1.0 is a real LLM call when online, with AST-level safety checks, a constraint report, and a content-addressable cache that turns yesterday's online run into today's offline replay. That is the honest version of what the specification describes.
 
-What the specification does establish is that such a language is conceivable. The primitives are coherent. The syntax parses. The execution model, though strange, has historical precedent in dataflow languages and theoretical precedent in the Waveform Logic framework. The intent layer pushes against the current frontier of AI capability but does not require capability that does not exist.
+The other recommendation misses the bet. New Code is not a DSL for signal processing. The 𝕎 primitive looks audio-specific because audio is the domain where four-component waveform structure is already native vocabulary, but the abstraction generalises: a UI state, a belief, a transaction, a database stream — all have frequency, amplitude, phase, and shape as latent components. What makes New Code worth building is the claim that this structure is universal, that intent is a first-class declaration, and that the combination kills categories of bug that conventional languages cannot name.
 
-The deeper claim is the one the Philosophy note opened with: code in its current form is a compromise artefact, and the compromise will become untenable as AI systems become the primary producers and consumers of code. When that transition happens, some language will be the one we use to interface with the machines that write our software. That language will be closer to what is described here than to Python, because the constraints that shaped Python (human readability, keyboard ergonomics, backwards compatibility with Algol-descended tradition) will no longer be the binding ones.
-
-New Code is an attempt to design for the constraints that will be binding: machine interpretation, specification-driven generation, structural preservation of domain information, explicit coupling of what is actually coupled, and a clean separation between what the human knows and what the compiler produces.
-
-The bloodstream metaphor from the opening of this project is the right one. We will not read the code. We will interpret it. And the interpretation will work if the primitives are right.
-
-The primitives proposed here are waveforms, processes, entanglements, and intents. We will see.
+v1.0 is the version you can build with. Everything from here is widening — more shapes, more couplings, more streaming primitives, formal intent verification when that becomes a solved problem — not deepening the bet.
 
 ---
 
