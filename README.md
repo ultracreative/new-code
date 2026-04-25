@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/header.png" alt="New Code" width="100%">
+</p>
+
 # New Code
 
 **A machine-native language for human–AI collaboration. v1.0.**
