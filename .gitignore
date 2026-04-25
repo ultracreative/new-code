@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+
+# VS Code extension build artefacts
+vscode-newcode/node_modules/
+vscode-newcode/out/
+vscode-newcode/*.vsix
+
+# Local config / secrets
+.env
+.env.*
+!.env.example
+
+# Snapshot stores written during local runs
+*.snap.json
+!tests/fixtures/*.snap.json

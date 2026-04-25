@@ -1,0 +1,38 @@
+{
+  "comments": {
+    "lineComment": "※"
+  },
+  "brackets": [
+    ["(", ")"],
+    ["⟨", "⟩"],
+    ["「", "」"],
+    ["『", "』"],
+    ["[", "]"],
+    ["{", "}"]
+  ],
+  "autoClosingPairs": [
+    { "open": "(", "close": ")" },
+    { "open": "⟨", "close": "⟩" },
+    { "open": "「", "close": "」" },
+    { "open": "『", "close": "』" },
+    { "open": "[", "close": "]" },
+    { "open": "{", "close": "}" },
+    { "open": "\"", "close": "\"" },
+    { "open": "'", "close": "'" }
+  ],
+  "surroundingPairs": [
+    ["(", ")"],
+    ["⟨", "⟩"],
+    ["「", "」"],
+    ["『", "』"],
+    ["[", "]"],
+    ["{", "}"],
+    ["\"", "\""],
+    ["'", "'"]
+  ],
+  "indentationRules": {
+    "increaseIndentPattern": "^\\s*(fn|process|module|let|extern)\\b.*$|^\\s*(intent|forbid|ensure|requires|emits|consumes|guard)\\s*:.*$|.*\\{\\s*$",
+    "decreaseIndentPattern": "^\\s*(≔|:=)\\s*|^\\s*\\}\\s*$"
+  },
+  "wordPattern": "[A-Za-z_𝕎ℝℕℤ𝔹][A-Za-z0-9_]*"
+}

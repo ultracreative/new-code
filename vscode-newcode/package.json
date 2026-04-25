@@ -1,0 +1,90 @@
+{
+  "name": "vscode-newcode",
+  "displayName": "New Code",
+  "description": "Language support for New Code — a machine-native language for human–AI collaboration.",
+  "version": "0.1.0",
+  "publisher": "ultranarrative",
+  "author": { "name": "Daniel Rodríguez Suárez" },
+  "license": "TBD",
+  "engines": { "vscode": "^1.76.0" },
+  "categories": ["Programming Languages", "Themes"],
+  "icon": "icons/nc_extension_icon.png",
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:newcode"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "newcode.insertJapaneseBrackets",
+        "title": "Insert Japanese Brackets"
+      }
+    ],
+    "languages": [
+      {
+        "id": "newcode",
+        "aliases": ["New Code", "newcode"],
+        "extensions": [".nc"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/new_code_file_icon.png",
+          "dark": "./icons/new_code_file_icon.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "newcode",
+        "scopeName": "source.newcode",
+        "path": "./syntaxes/newcode.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "newcode-icons",
+        "label": "New Code Icons",
+        "path": "./icons/newcode-icon-theme.json"
+      }
+    ],
+    "colors": [
+      {
+        "id": "newcode.japaneseBracketForeground",
+        "description": "Foreground color for Japanese brackets in New Code files.",
+        "defaults": {
+          "dark": "#ffb454",
+          "light": "#b54708",
+          "highContrast": "#ffd700",
+          "highContrastLight": "#8a2d00"
+        }
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "New Code",
+      "properties": {
+        "newcode.lsp.command": {
+          "type": "string",
+          "default": "python",
+          "description": "Command used to launch the New Code language server. The extension invokes `<command> -m newcode.lsp`."
+        },
+        "newcode.lsp.args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["-m", "newcode.lsp"],
+          "description": "Arguments passed to the language-server command."
+        },
+        "newcode.lsp.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to launch the language server."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "scripts": {
+    "postinstall": "echo 'Extension ready. Press F5 in VS Code to launch an Extension Development Host.'"
+  }
+}

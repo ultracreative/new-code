@@ -1,0 +1,14 @@
+{
+  "iconDefinitions": {
+    "_newcode_file": {
+      "iconPath": "./new_code_file_icon.png"
+    }
+  },
+  "fileExtensions": {
+    "nc": "_newcode_file"
+  },
+  "languageIds": {
+    "newcode": "_newcode_file"
+  },
+  "hidesExplorerArrows": false
+}
