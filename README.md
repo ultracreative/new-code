@@ -6,7 +6,7 @@
 
 **A machine-native language for human–AI collaboration. v1.0.**
 
-*Daniel Rodríguez Suárez · UltraNarrative LTD · April 2026*
+*Dan Rodriguez · [UltraNarrative](https://ultranarrative.com) · [newcode.ultranarrative.com](https://newcode.ultranarrative.com) · [dan@ultranarrative.com](mailto:dan@ultranarrative.com) · April 2026*
 
 ---
 

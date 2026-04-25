@@ -2,10 +2,17 @@
 name = "newcode"
 version = "1.0.0"
 description = "New Code — a machine-native language for human–AI collaboration"
-authors = [{ name = "Daniel Rodríguez Suárez" }]
+authors = [{ name = "Dan Rodriguez", email = "dan@ultranarrative.com" }]
 requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "Apache-2.0" }
+
+[project.urls]
+Homepage      = "https://newcode.ultranarrative.com"
+Documentation = "https://newcode.ultranarrative.com"
+Repository    = "https://github.com/ultracreative/new-code"
+Issues        = "https://github.com/ultracreative/new-code/issues"
+Organization  = "https://ultranarrative.com"
 
 [project.scripts]
 newcode = "newcode.repl:main"

@@ -4,7 +4,7 @@
 
 *A working specification, v0.1*
 
-Daniel Rodríguez Suárez · UltraNarrative LTD · April 2026
+Dan Rodriguez · [UltraNarrative](https://ultranarrative.com) · [newcode.ultranarrative.com](https://newcode.ultranarrative.com) · [dan@ultranarrative.com](mailto:dan@ultranarrative.com) · April 2026
 
 ---
 
@@ -854,23 +854,27 @@ What is new in New Code is the combination. No existing language takes waveform 
 
 ---
 
-## 17. Open Problems
+## 17. What Is Still Open
 
-This specification describes a language that does not yet have a working compiler. Building one requires solving several problems that are, at the time of writing, open.
+v1.0 closes most of what the original specification listed as open. A working compiler exists with three backends, the runtime unfolds processes and propagates entanglement, the REPL drives both, the language server runs editors, the debugger renders unfolding live, and the browser playground removes the install step for evaluation. What follows is the honest list of what is *still* open — the v2 agenda — and the known limits a user of v1 should hold in mind.
 
-**Verification of intent.** The compiler is required to verify that a function body satisfies its declared intent, forbid, and ensure clauses. For formal invariants this is straightforward; it reduces to existing program-verification techniques. For natural-language intents, the state of the art is an AI system producing a plausibility judgement. Turning plausibility into guarantee is the core technical challenge of the language.
+### ⇝ Open · 4 of 14
 
-**The cost of collapse.** Every operation on `𝕎` is more expensive than the corresponding operation on `ℝ`. For audio-rate code, this may be prohibitive on current hardware. Compilers will need to recognise opportunities to elide structure when downstream code proves it won't be used. This is a classical program-analysis problem with a modern twist: the analysis is over structural information, not just values.
+These are the four items from the original §17 that v1.0 has not closed. The other ten — working compiler, runtime, parser, FFI execution, REPL, debugger, language server, modules, snapshot replay, provenance — are landed in v1.
 
-**Drift semantics in distributed systems.** When processes run on different machines, whose drift is it? The specification is silent on this, and the right answer probably requires a theory of distributed drift that doesn't yet exist.
+- **Formal verification of natural-language intent.** *(OPEN.)* The compiler produces code that *probably* satisfies the intent and runs it through an AST/safety pass plus a constraint report. That is a check, not a proof. Turning plausibility into guarantee is still the core technical challenge of the language.
+- **Foreign function interface · boundary types.** *(FFI.)* `host_load`, `host_call`, and `extern python { … }` work at runtime: a score can pull NumPy in and call it. What is *not* yet specified is the type-level boundary — how host types are surfaced into New Code's type system, what marshalling guarantees hold across the boundary, and what happens when a long-running process is called from a short-lived host function.
+- **`evolving` · `await` · streaming primitives.** *(SPEC.)* These are in the specification but not in the v1 implementation. v1 has finite `unfold` and pair-wise entanglement; time-varying continuations and streaming await are deferred.
+- **Browser REPL · try it without installing.** *(NEXT.)* The browser playground (`python -m newcode.playground`) ships a stdlib-only HTTP server and a single-page frontend, but it still requires a local Python install. A fully hosted version that runs the compiler server-side and exposes the REPL/debugger over the open web is the next adoption-side milestone.
 
-**Interoperability.** How does New Code interoperate with a codebase written in conventional languages? The FFI layer described in Section 11.5 is a sketch, not a solution. Real interoperability will require boundary types, marshalling rules, and a story about what happens when a long-running New Code process is called from a short-lived C function.
+### ◌ Known Limits · approximate
 
-**Tooling.** A language without a debugger, profiler, and package manager is an academic curiosity. Each of these has to be rethought for a language where execution is unfolding rather than stepping. The shape of a debugger for a continuously-evolving process graph is a research question.
+These are intentional limits of v1, not unfinished work. They define what a user should and should not expect from v1 today.
 
-**Human review.** If the compiler produces the body and the human writes only the intent, how does the human validate the body? Machine-assisted review tools that render the generated code in human-friendly form, diff against expected behaviour, and highlight deviations are essential. None exist yet.
+- **Intent verification is plausibility, not proof.** *(HONEST.)* The Anthropic backend returns a body, the constraint report scores it against intent/forbid/ensure clauses, and provenance records the decision. Acceptance is auditable; it is not formally verified. Treat compiled bodies the way you treat code review output: trust, but read.
+- **Offline compiler covers only six known intents.** *(FALLBACK.)* `OfflineCompiler` is a deterministic pattern matcher for `amplify`, `invert`, `collapse`, `drift`, `coherence`, and `superpose`. It exists for keyless environments and tests. Anything beyond that set raises `OfflineHoleError`. The main story is the Anthropic backend; the offline matcher is a fallback, not a substitute.
 
-These problems are not reasons not to pursue the language. They are the agenda.
+These items are not reasons not to use v1. They are the agenda for v2.
 
 ---
 
@@ -1032,8 +1036,8 @@ The primitives proposed here are waveforms, processes, entanglements, and intent
 
 ---
 
-*New Code v0.1 · Working Specification · Daniel Rodríguez Suárez · UltraNarrative LTD · April 2026*
+*New Code v1.0 · Working Specification · Dan Rodriguez · [UltraNarrative](https://ultranarrative.com) · [newcode.ultranarrative.com](https://newcode.ultranarrative.com) · [dan@ultranarrative.com](mailto:dan@ultranarrative.com) · April 2026*
 
-*Built on: Waveform Logic (Rodríguez Suárez, 2026), Processism (Rodríguez Suárez, 2026), and the Philosophy note on machine-native computation.*
+*Built on: Waveform Logic (D. R. S., 2026), Processism (D. R. S., 2026), and the Philosophy note on machine-native computation.*
 
-*This is a working draft. All definitions subject to revision. Implementation work is pre-pre-alpha.*
+*v1.0 ships a working compiler, runtime, REPL, language server, debugger, and browser playground. Definitions are stable for v1; the open items in §17 are the v2 agenda.*
